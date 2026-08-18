@@ -1,0 +1,6 @@
+# dsh-pricing bundle patch — registers the plugin as a loader entry.
+# Applied automatically when the package is added via `dsh plugin --profile <name> add <path>`
+# (the package's dsh.bundle declaration joins it to the profile layer stack).
+- insert:
+    - id: dsh-pricing
+      name: dsh-pricing

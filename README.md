@@ -14,11 +14,31 @@ dsh-pricing/
 
 插件免构建、零运行时依赖（Host 用 Node 内置 fetch；客户端 react 由 DSH 运行时提供）。
 
-## 安装（任选一种）
+## 安装
 
 > 前提：目标电脑已启动过一次 DSH Desktop（生成 `~/.dsh` 目录）。
+> `dsh` 命令需要 Node ≥ 22.19 运行 CLI（如 nvm 的 v22/v24），并让 `pnpm` 在 PATH 上（DSH Desktop 自带：`~/Library/Application Support/DSH Desktop/runtime-commands/bin`）。
 
-### 方式 A：软链接（推荐，更新最方便）
+### 方式 A：dsh plugin 命令（推荐，一条命令装完）
+
+插件已打包为标准 bundle（声明了 `dsh.bundle.patch`），`dsh plugin add` 会自动完成三件事：**安装依赖 + 加入 profile 的 bundle 层 + 通过插件自带的 cordis.patch.yml 注册 loader 条目**。
+
+```bash
+# 本地路径（从插件目录或绝对路径）
+dsh plugin --profile desktop add /path/to/dsh-pricing
+
+# 或 git 仓库（插件无构建脚本，无需 allowBuilds）
+dsh plugin --profile desktop add git+https://github.com/<你>/dsh-pricing.git
+
+# 装完重启 DSH Desktop（Cmd+Q 再打开）
+```
+
+卸载：`dsh plugin --profile desktop remove dsh-pricing`（然后重启）。
+
+> `dsh` CLI 位于 DSH 应用内，可用如下方式调用（以 nvm Node 24 为例）：
+> `~/.nvm/versions/node/v24.15.0/bin/node "/Applications/DSH Desktop.app/Contents/Resources/app.asar.unpacked/node_modules/@deepseek-ai/dsh/lib/bin.js" plugin --profile desktop add <path>`
+
+### 方式 B：软链接（免 dsh 命令，更新最方便）
 
 ```bash
 # 1. 克隆到稳定位置

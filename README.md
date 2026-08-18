@@ -1,6 +1,11 @@
+
 # dsh-pricing
 
 DeepSeek 定价插件（DSH Desktop）：会话头部标题行、**Session log 按钮左侧**显示当前模型的定价徽章；点击弹出完整定价表（缓存命中/未命中输入/输出 × 峰谷时段，当前时段高亮）。数据来自官方定价页（Host 抓取，1 小时 TTL 缓存），切换模型实时刷新，可手动刷新。
+<img width="970" height="49" alt="image" src="https://github.com/user-attachments/assets/188e5207-cd6d-406b-ac4e-daf891152fa4" />
+
+<img width="399" height="285" alt="image" src="https://github.com/user-attachments/assets/cbaef6a3-fc05-4a30-9497-8e0e74895d69" />
+
 
 ## 目录结构
 
